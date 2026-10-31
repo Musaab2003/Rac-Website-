@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golden Hour 2.0: Where Time Slowed Down | Rotaract Club of ICBT</title>
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- AOS Animations -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <!-- Greek Theme Custom CSS -->
+  <link rel="stylesheet" href="css/greek-theme.css">
+
+  <style>
+    :root {
+      --maroon-primary: #2f0410;
+      --maroon-rich: #480a1c;
+      --maroon-light: #6a132c;
+      --antique-silver: #d1d8e0;
+      --text-main: #221b18;
+      --text-muted: #5e534a;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #fcfaf5;
+      color: var(--text-main);
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .golden-hero {
+      position: relative;
+      background: linear-gradient(145deg, #180108 0%, #2f0410 50%, #480a1c 100%);
+      color: #ffffff;
+      padding: 70px 0 100px;
+      overflow: hidden;
+    }
+
+    .golden-hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(106, 19, 44, 0.35), transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(47, 4, 16, 0.5), transparent 50%);
+      pointer-events: none;
+    }
+
+    .golden-hero h1,
+    .golden-hero h1.hero-main-title {
+      font-family: 'Cinzel', serif !important;
+      color: #ffffff !important;
+      font-size: clamp(2.2rem, 4.2vw, 3.4rem) !important;
+      font-weight: 800 !important;
+      line-height: 1.25 !important;
+      letter-spacing: 0.02em !important;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 25px rgba(209, 216, 224, 0.2) !important;
+      margin-bottom: 20px !important;
+    }
+
+    .silver-gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #e8edf2 40%, #c4cfda 70%, #ffffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+
+    .avenue-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--maroon-primary);
+      border: 1px solid var(--antique-silver);
+      color: #ffffff !important;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      margin-bottom: 18px;
+    }
+
+    .hero-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.92rem;
+      color: #e5e7eb !important;
+      margin-bottom: 24px;
+    }
+
+    .hero-meta-bar span {
+      display: inline-flex;
+      align-items: center;
+      color: #f1f5f9 !important;
+    }
+
+    .hero-meta-bar i {
+      color: var(--antique-silver) !important;
+      margin-right: 6px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: #f8fafc !important;
+      line-height: 1.7;
+      opacity: 0.95;
+      max-width: 600px;
+    }
+
+    /* Hero Cover Frame */
+    .hero-cover-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .hero-cover-img-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid rgba(209, 216, 224, 0.6);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(209, 216, 224, 0.25);
+      transition: transform 0.4s ease;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-cover-img-wrap:hover {
+      transform: translateY(-4px);
+    }
+
+    .hero-cover-img {
+      width: 100%;
+      height: auto;
+      max-height: 480px;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Main Article Container */
+    .article-outer-wrap {
+      margin-top: -50px;
+      position: relative;
+      z-index: 10;
+      padding-bottom: 90px;
+    }
+
+    .article-content-card {
+      background: #ffffff;
+      border: 1px solid #ded5c5;
+      border-radius: 22px;
+      padding: clamp(26px, 5vw, 65px);
+      box-shadow: 0 20px 45px rgba(47, 4, 16, 0.07);
+    }
+
+    .article-lead-text {
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.85;
+      color: var(--maroon-primary);
+      border-left: 4px solid var(--maroon-primary);
+      padding-left: 20px;
+      margin-bottom: 28px;
+    }
+
+    .story-paragraph {
+      font-size: 1.08rem;
+      line-height: 1.95;
+      color: #3f3933;
+      margin-bottom: 24px;
+    }
+
+    /* Embedded Inside Image */
+    .story-inline-photo-box {
+      margin: 45px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #ded5c5;
+      box-shadow: 0 15px 35px rgba(47, 4, 16, 0.12);
+      background: #000;
+    }
+
+    .story-inline-img {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .photo-caption-bar {
+      background: #faf6f0;
+      padding: 16px 24px;
+      border-top: 1px solid #eee7d7;
+      font-size: 0.92rem;
+      color: #6b5e52;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-style: italic;
+    }
+
+    .photo-caption-bar i {
+      color: var(--maroon-primary);
+      font-size: 1.1rem;
+    }
+
+    /* Featured Highlight Quote */
+    .maroon-quote-card {
+      background: linear-gradient(135deg, #fcfaf5 0%, #f7efe4 100%);
+      border: 1px solid #ded5c5;
+      border-left: 6px solid var(--maroon-primary);
+      border-radius: 18px;
+      padding: 32px 36px;
+      margin: 40px 0;
+      position: relative;
+      box-shadow: 0 8px 25px rgba(47, 4, 16, 0.05);
+    }
+
+    .maroon-quote-text {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+      font-weight: 700;
+      color: var(--maroon-primary);
+      line-height: 1.55;
+      margin-bottom: 0;
+    }
+
+    .btn-return-blog {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 22px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(209, 216, 224, 0.5);
+      color: #ffffff !important;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-return-blog:hover {
+      background: #ffffff;
+      color: var(--maroon-primary) !important;
+      transform: translateX(-4px);
+    }
+
+    .btn-action-greek {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 10px 24px;
+      border-radius: 30px;
+    }
+
+    .lang-switcher-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: #f1ede6;
+      border: 1px solid #ded5c5;
+      border-radius: 20px;
+      color: var(--maroon-primary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .lang-switcher-pill:hover {
+      background: var(--maroon-primary);
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Temple Navbar -->
+  <nav class="navbar navbar-expand-lg temple-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/nav_logo.png" alt="Rotaract ICBT | Create Lasting Impact" class="brand-logo-img">
+      </a>
+      <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+        <i class="fas fa-bars text-white fs-4"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav mx-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">RacFam</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="racfam.html">Executive Committee</a></li>
+              <li><a class="dropdown-item" href="racfam2.html">Board Of Directors</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">What We Do</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="history.html">History</a></li>
+              <li><a class="dropdown-item" href="about.html">About</a></li>
+              <li><a class="dropdown-item" href="formality.html">Formality</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Avenues</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="clubservice.html">Club Service</a></li>
+              <li><a class="dropdown-item" href="commiunityserv.html">Community Service</a></li>
+              <li><a class="dropdown-item" href="internationalser.html">International Service</a></li>
+              <li><a class="dropdown-item" href="profetionald.html">Professional Development</a></li>
+              <li><a class="dropdown-item" href="pr.html">Public Relations</a></li>
+              <li><a class="dropdown-item" href="sportsrecreation.html">Sports and Recreation</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0"><a href="contact.html" class="btn-nav-silver"><i class="fas fa-paper-plane"></i> Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header Section -->
+  <header class="golden-hero">
+    <div class="container position-relative" style="z-index: 2;">
+      
+      <div class="row align-items-center g-4 g-lg-5">
+        <!-- Left Title & Meta Column -->
+        <div class="col-lg-6" data-aos="fade-right">
+          
+          <a href="blog.html?category=club-service" class="btn-return-blog">
+            <i class="fas fa-arrow-left"></i> Return to Blog Chronicles
+          </a>
+
+          <div>
+            <span class="avenue-tag-pill">
+              <i class="fas fa-handshake"></i> Club Service Avenue
+            </span>
+          </div>
+
+          <h1 class="hero-main-title">
+            Golden Hour 2.0: <br>
+            <span class="silver-gradient-text">Where Time Slowed Down</span>
+          </h1>
+
+          <div class="hero-meta-bar">
+            <span><i class="fas fa-calendar-alt"></i> September 2026</span>
+            <span>&bull;</span>
+            <span><i class="fas fa-user-pen"></i> Club Service Editorial</span>
+          </div>
+
+          <p class="hero-subtitle">
+            An evening where we stepped away from routines, responsibilities, and busy schedules to simply enjoy being together as a family.
+          </p>
+
+        </div>
+
+        <!-- Right Hero Cover Image Column -->
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="150">
+          <div class="hero-cover-container">
+            <div class="hero-cover-img-wrap">
+              <img src="assets/blog/golden_hour_cover.jpg" alt="Golden Hour 2.0 Rotaract ICBT Sunset Gathering" class="hero-cover-img">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+  <div class="greek-frieze-border"></div>
+
+  <!-- Main Article Body -->
+  <main class="container article-outer-wrap">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        
+        <article class="article-content-card" data-aos="fade-up">
+
+          <!-- Language Switcher Bar -->
+          <div class="d-flex justify-content-between align-items-center pb-3 mb-4 border-bottom">
+            <span class="small text-muted fw-bold">Language / භාෂාව / மொழி:</span>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="lang-switcher-pill active" style="background: var(--maroon-primary); color: #fff;">
+                <i class="fas fa-check"></i> English Version
+              </span>
+              <a href="blogPost6.html" class="lang-switcher-pill">
+                <i class="fas fa-language"></i> தமிழ் பதிப்பு
+              </a>
+              <a href="blogPost7.html" class="lang-switcher-pill">
+                <i class="fas fa-language"></i> සිංහල සංස්කරණය
+              </a>
+            </div>
+          </div>
+
+          <!-- Lead Paragraph -->
+          <p class="article-lead-text">
+            With our usual busy schedules, meetings, studies, work, responsibilities, and everything happening around us, it is not often that we get the chance to simply pause and enjoy being together. Golden Hour 2.0 gave us exactly that, an evening where we could step away from our routines, relax, and spend time together as a club without worrying about what came next.
+          </p>
+
+          <!-- Paragraph 2 -->
+          <p class="story-paragraph">
+            From the moment we started, the atmosphere felt different. There was no rush to finish a task or organise an event. Instead, we had time to talk, laugh, play, and just enjoy each other’s company. We shared food, passed things around, tried different snacks, and somehow every little conversation became a story of its own. Sometimes, it is the simplest things, sitting together with food, talking about random topics, teasing each other, and laughing at completely goofy moments, that become the memories we remember most.
+          </p>
+
+          <!-- Inside Image (Photo 2) -->
+          <div class="story-inline-photo-box" data-aos="zoom-in">
+            <img src="assets/blog/golden_hour_inside.jpg" alt="Golden Hour 2.0 Rotaract ICBT Beach Fellowship Selfie" class="story-inline-img">
+            <div class="photo-caption-bar">
+              <i class="fas fa-camera-retro"></i>
+              <span>Unfiltered joy, spontaneous laughter, and the warmth of sunset fellowship, Rotaract Club of ICBT Family.</span>
+            </div>
+          </div>
+
+          <!-- Paragraph 3 -->
+          <p class="story-paragraph">
+            Of course, being together also meant experiencing our usual chaos. There were playful arguments, silly jokes, endless conversations, and moments where absolutely nothing made sense but everyone was laughing anyway. For a while, our responsibilities as club members disappeared, and we were simply a group of people enjoying an evening together.
+          </p>
+
+          <!-- Paragraph 4 -->
+          <p class="story-paragraph">
+            Golden Hour 2.0 reminded us that a club is not only built through projects, meetings, and achievements. It is also built through shared meals, ridiculous jokes, spontaneous adventures, little disagreements, long conversations, and moments where everyone can simply be themselves.
+          </p>
+
+          <!-- Paragraph 5 -->
+          <p class="story-paragraph">
+            By the end, we had walked a long way from where we started, barefoot, slightly wet, tired, and probably still talking.
+          </p>
+
+          <!-- Highlight Quote Banner -->
+          <div class="maroon-quote-card" data-aos="fade-up">
+            <div class="d-flex align-items-center gap-3">
+              <i class="fas fa-quote-left fs-1" style="color: var(--maroon-primary); opacity: 0.85;"></i>
+              <p class="maroon-quote-text">
+                “Most importantly, we walked away with memories that no meeting could ever create.”
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom Footer Navigation & Share Section -->
+          <div class="pt-4 mt-5 border-top d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
+            <a href="blog.html?category=club-service" class="btn btn-greek btn-crimson btn-action-greek">
+              <i class="fas fa-arrow-left me-2"></i> Return to Chronicles
+            </a>
+
+            <div class="d-flex align-items-center gap-2">
+              <span class="small text-muted fw-bold me-1">Share:</span>
+              <a href="https://www.facebook.com/rotaracticbt" target="_blank" class="coin-social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/rotaracticbt/" target="_blank" class="coin-social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/rotaract-icbt" target="_blank" class="coin-social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Temple Base Footer -->
+  <footer class="temple-base-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <img src="assets/footer_badge.png" alt="Rotaract Emblem" style="width: 54px; height: 54px; border-radius: 50%; box-shadow: 0 0 15px rgba(209, 216, 224, 0.4);">
+            <div>
+              <h5 class="greek-title text-white mb-0">Rotaract Club of ICBT</h5>
+              <small class="text-light opacity-75">District 3220 &bull; Chartered 2018</small>
+            </div>
+          </div>
+          <p class="small text-light opacity-75">
+            Dedicated to transforming collegiate ambitions into sustainable community actions through leadership, international goodwill, and unswerving fellowship.
+          </p>
+        </div>
+        <div class="col-sm-6 col-lg-2 footer-column-pillar">
+          <h5 class="footer-heading">Portals</h5>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="history.html">Our History</a></li>
+            <li><a href="awards.html">Awards</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3 footer-column-pillar">
+          <h5 class="footer-heading">RacFam</h5>
+          <ul class="footer-links-list">
+            <li><a href="racfam.html">Executive Committee</a></li>
+            <li><a href="racfam2.html">Board of Directors</a></li>
+            <li><a href="clubservice.html">Club Service</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 footer-column-pillar">
+          <h5 class="footer-heading">Council Heralds</h5>
+          <div class="d-flex flex-wrap mb-3">
+            <a href="https://www.facebook.com/rotaracticbt" target="_blank" class="coin-social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/rotaracticbt/" target="_blank" class="coin-social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/rotaract-icbt" target="_blank" class="coin-social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@rotaractcluboficbt5506" target="_blank" class="coin-social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <a href="contact.html" class="btn btn-greek btn-silver btn-sm w-100"><i class="fas fa-paper-plane me-1"></i> Contact Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-stylobate-bottom text-center">
+      <div class="container">
+        <p class="mb-0">&copy; 2026 Rotaract Club of ICBT &bull; Chartered under Rotary International District 3220. All Hellenic Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="js/greek-theme.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
+</body>
+</html>

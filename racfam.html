@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Committee - Rotaract Club of ICBT</title>
+  <link rel="icon" type="image/png" href="assets/icon.png">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- AOS Scroll Animations -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <!-- Custom Greek Mythology Theme CSS -->
+  <link rel="stylesheet" href="css/greek-theme.css">
+
+  <style>
+    .leader-coin-card {
+      background: #ffffff;
+      border: 1px solid #ded5c5;
+      border-bottom: 4px solid var(--antique-silver, #d1d8e0);
+      border-radius: 12px;
+      padding: 32px 22px 24px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(47, 4, 16, 0.08);
+      transition: all 0.35s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .leader-coin-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(47, 4, 16, 0.18), 0 0 20px rgba(209, 216, 224, 0.4);
+      border-color: var(--antique-silver, #d1d8e0);
+    }
+
+    .leader-portrait-wrap {
+      width: 154px;
+      height: 154px;
+      margin: 0 auto 20px auto;
+      border-radius: 50%;
+      padding: 5px;
+      background: linear-gradient(135deg, #ffffff 0%, #d8e2eb 100%);
+      border: 3px solid var(--antique-silver, #d1d8e0);
+      box-shadow: 
+        0 0 20px rgba(209, 216, 224, 0.45),
+        0 8px 20px rgba(47, 4, 16, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .leader-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      border-radius: 50%;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .leader-coin-card:hover .leader-img {
+      transform: scale(1.08);
+    }
+
+    .leader-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--greek-crimson, #2f0410);
+      line-height: 1.3;
+    }
+
+    .leader-role {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--greek-crimson-rich, #480a1c);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .leader-desc {
+      font-size: 0.88rem;
+      color: #5e534a;
+      line-height: 1.6;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .leader-socials {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .leader-social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--greek-beige, #f5efe4);
+      color: var(--greek-crimson, #2f0410);
+      border: 1px solid #d5cbb8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.88rem;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .leader-social-link:hover {
+      background: #000000;
+      color: #ffffff;
+      border-color: var(--antique-silver, #d1d8e0);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Temple Navbar -->
+  <nav class="navbar navbar-expand-lg temple-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/nav_logo.png" alt="Rotaract ICBT | Create Lasting Impact" class="brand-logo-img">
+      </a>
+      <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+        <i class="fas fa-bars text-white fs-4"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav mx-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">RacFam</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item active" href="racfam.html">Executive Committee</a></li>
+              <li><a class="dropdown-item" href="racfam2.html">Board Of Directors</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">What We Do</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="history.html">History</a></li>
+              <li><a class="dropdown-item" href="about.html">About</a></li>
+              <li><a class="dropdown-item" href="formality.html">Formality</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Avenues</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="clubservice.html">Club Service</a></li>
+              <li><a class="dropdown-item" href="commiunityserv.html">Community Service</a></li>
+              <li><a class="dropdown-item" href="internationalser.html">International Service</a></li>
+              <li><a class="dropdown-item" href="profetionald.html">Professional Development</a></li>
+              <li><a class="dropdown-item" href="pr.html">Public Relations</a></li>
+              <li><a class="dropdown-item" href="sportsrecreation.html">Sports and Recreation</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0"><a href="contact.html" class="btn-nav-silver"><i class="fas fa-paper-plane"></i> Contact Us</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Subpage Header -->
+  <header class="hero-pantheon" style="min-height: 44vh; padding: 90px 20px 50px;">
+    <div class="container text-center">
+      <div class="hero-badge-tag"><i class="fas fa-crown"></i> High Archons 2026/2027
+      </div>
+      <h1 class="hero-title" style="font-size: 2.8rem;">Executive <span class="silver-accent">Committee</span></h1>
+      <p class="hero-greek-motto">&ldquo;The Guardians of Purpose &bull; Leading with Honor and Vision&rdquo;</p>
+    </div>
+  </header>
+
+  <div class="greek-frieze-border"></div>
+
+  <!-- Executive Committee Grid -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row g-4 justify-content-center align-items-stretch">
+        
+        <!-- 1. President -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="leader-coin-card">
+            <div class="leader-portrait-wrap">
+              <img src="assets/team/Eveen2026.jpeg " alt="President" class="leader-img">
+            </div>
+            <h4 class="leader-title">Rtr. Eveen</h4>
+            <div class="leader-role">President &bull; Archon Basileus</div>
+            <p class="leader-desc">Steering the club's overarching vision, international partnerships, and high-impact district ventures.</p>
+            <div class="leader-socials">
+              <a href="#" class="leader-social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="leader-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="mailto:icbtrotaract@gmail.com" class="leader-social-link" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+         <!-- 4. Joint Secretary -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+          <div class="leader-coin-card">
+            <div class="leader-portrait-wrap">
+              <img src="assets/team/SASBI.jpg " alt=" Secretary" class="leader-img">
+            </div>
+            <h4 class="leader-title">Rtr.Sasvi Vinethmi Wijewickrama</h4>
+            <div class="leader-role">Joint Secretary &bull; Co-Scribe</div>
+            <p class="leader-desc">Supporting correspondence, member directory maintenance, and administrative documentation.</p>
+            <div class="leader-socials">
+              <a href="#" class="leader-social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="leader-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="mailto:icbtrotaract@gmail.com" class="leader-social-link" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+
+      
+
+        <!-- 3. Secretary -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="leader-coin-card">
+            <div class="leader-portrait-wrap">
+              <img src="assets/team/IMG-20251005-WA0028.jpg" alt="Joint Secretary" class="leader-img">
+            </div>
+            <h4 class="leader-title">Rtr.Ameerah</h4>
+            <div class="leader-role">Secretary &bull; Grammateus</div>
+            <p class="leader-desc">Keeper of records, secretarial chronicles, general communications, and district reporting.</p>
+            <div class="leader-socials">
+              <a href="#" class="leader-social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="leader-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="mailto:icbtrotaract@gmail.com" class="leader-social-link" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+       
+
+          <!-- 2. Vice President -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+          <div class="leader-coin-card">
+            <div class="leader-portrait-wrap">
+              <img src="assets/team/hafzanew.jpg" alt="Vice President" class="leader-img">
+            </div>
+            <h4 class="leader-title">Rtr. Hafsah Nawaz</h4>
+            <div class="leader-role">Vice President &bull; Polemarch</div>
+            <p class="leader-desc">Coordinating avenue synergy, member empowerment, and strategic execution across all club projects.</p>
+            <div class="leader-socials">
+              <a href="#" class="leader-social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="leader-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="mailto:icbtrotaract@gmail.com" class="leader-social-link" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Treasurer -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="leader-coin-card">
+            <div class="leader-portrait-wrap">
+              <img src="assets/team/pp.png" alt="Treasurer" class="leader-img">
+            </div>
+            <h4 class="leader-title">Rtr. Musaab Yoosoof</h4>
+            <div class="leader-role">Treasurer &bull; Tamias</div>
+            <p class="leader-desc">Guardian of treasury resources, budget allocations, meeting protocol, and decorum.</p>
+            <div class="leader-socials">
+              <a href="#" class="leader-social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="leader-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="mailto:icbtrotaract@gmail.com" class="leader-social-link" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Sergeant at Arms -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="350">
+          <div class="leader-coin-card">
+            <div class="leader-portrait-wrap">
+              <img src="assets/team/IMG-20251005-WA0023.jpg" alt="Sergeant at Arms" class="leader-img">
+            </div>
+            <h4 class="leader-title">Rtr.Sahl</h4>
+            <div class="leader-role">Sergeant at Arms &bull; Hoplite</div>
+            <p class="leader-desc">Ensuring meeting decorum, protocol discipline, and parliamentary order during assemblies.</p>
+            <div class="leader-socials">
+              <a href="#" class="leader-social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="leader-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="mailto:icbtrotaract@gmail.com" class="leader-social-link" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Editor -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="leader-coin-card">
+            <div class="leader-portrait-wrap">
+              <img src="assets/team/SURR.png" alt="Editor" class="leader-img">
+            </div>
+            <h4 class="leader-title">Rtr.Sureni</h4>
+            <div class="leader-role">Editor &bull; Epistolographos</div>
+            <p class="leader-desc">Curating club newsletters, editorial manuscripts, storytelling, and official publications.</p>
+            <div class="leader-socials">
+              <a href="#" class="leader-social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="leader-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="mailto:icbtrotaract@gmail.com" class="leader-social-link" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-5" data-aos="fade-up">
+        <a href="racfam2.html" class="btn btn-greek btn-crimson">
+          <i class="fas fa-users-rays me-2"></i> View Board of Directors (Avenue Heads)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Temple Base Footer -->
+  <footer class="temple-base-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <img src="assets/footer_badge.png" alt="Rotaract Emblem" style="width: 54px; height: 54px; border-radius: 50%; box-shadow: 0 0 15px rgba(209, 216, 224, 0.4);">
+            <div>
+              <h5 class="greek-title text-white mb-0">Rotaract Club of ICBT</h5>
+              <small class="text-light opacity-75">District 3220 &bull; Chartered 2018</small>
+            </div>
+          </div>
+          <p class="small text-light opacity-75">
+            Dedicated to transforming collegiate ambitions into sustainable community actions through leadership, international goodwill, and unswerving fellowship.
+          </p>
+          <div class="d-flex align-items-center gap-2 mt-3">
+            <span class="badge bg-dark border border-secondary text-white p-2">Sri Lanka <img src="https://flagcdn.com/w20/lk.png" alt="LK" width="16"></span>
+            <span class="badge bg-dark border border-secondary text-white p-2">Maldives <img src="https://flagcdn.com/w20/mv.png" alt="MV" width="16"></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-2 footer-column-pillar">
+          <h5 class="footer-heading">Portals</h5>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="history.html">Our History</a></li>
+            <li><a href="awards.html">Awards</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3 footer-column-pillar">
+          <h5 class="footer-heading">RacFam</h5>
+          <ul class="footer-links-list">
+            <li><a href="racfam.html">Executive Committee</a></li>
+            <li><a href="racfam2.html">Board of Directors</a></li>
+            <li><a href="clubservice.html">Club Service</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 footer-column-pillar">
+          <h5 class="footer-heading">Council Heralds</h5>
+          <p class="small text-light opacity-75 mb-3">Connect across our digital agoras:</p>
+          <div class="d-flex flex-wrap">
+            <a href="https://www.facebook.com/rotaracticbt" target="_blank" class="coin-social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/rotaracticbt/" target="_blank" class="coin-social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/rotaract-icbt" target="_blank" class="coin-social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@rotaractcluboficbt5506" target="_blank" class="coin-social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="mt-3">
+            <a href="contact.html" class="btn btn-greek btn-silver btn-sm w-100"><i class="fas fa-paper-plane me-1"></i> Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-stylobate-bottom text-center">
+      <div class="container">
+        <p class="mb-0">&copy; 2026 Rotaract Club of ICBT &bull; Chartered under Rotary International District 3220. All Hellenic Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS Animation JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Greek Theme Custom JS -->
+  <script src="js/greek-theme.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
+</body>
+</html>

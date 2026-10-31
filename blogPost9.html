@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ජීවිතයක් බේරාගත හැකි සංවාදය (Sinhala Edition) | Rotaract Club of ICBT</title>
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Sans+Sinhala:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- AOS Animations -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <!-- Greek Theme Custom CSS -->
+  <link rel="stylesheet" href="css/greek-theme.css">
+
+  <style>
+    :root {
+      --maroon-primary: #2f0410;
+      --maroon-rich: #480a1c;
+      --maroon-light: #6a132c;
+      --maroon-dark: #180108;
+      --antique-silver: #d1d8e0;
+      --silver-glow: rgba(209, 216, 224, 0.4);
+      --text-main: #221b18;
+      --text-muted: #5e534a;
+      --parchment-bg: #fcfaf5;
+      --border-ancient: #ded5c5;
+    }
+
+    body {
+      font-family: 'Noto Sans Sinhala', 'Plus Jakarta Sans', sans-serif;
+      background: var(--parchment-bg);
+      color: var(--text-main);
+      line-height: 2;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .maroon-hero {
+      position: relative;
+      background: linear-gradient(145deg, #180108 0%, #2f0410 50%, #480a1c 100%);
+      color: #ffffff;
+      padding: 70px 0 100px;
+      overflow: hidden;
+    }
+
+    .maroon-hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(106, 19, 44, 0.4), transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(47, 4, 16, 0.6), transparent 50%);
+      pointer-events: none;
+    }
+
+    .maroon-hero h1,
+    .maroon-hero h1.hero-main-title {
+      font-family: 'Noto Sans Sinhala', 'Cinzel', serif !important;
+      color: #ffffff !important;
+      font-size: clamp(2rem, 4vw, 3.1rem) !important;
+      font-weight: 800 !important;
+      line-height: 1.35 !important;
+      letter-spacing: 0.01em !important;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 25px rgba(209, 216, 224, 0.25) !important;
+      margin-bottom: 20px !important;
+    }
+
+    .silver-gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #e8edf2 40%, #c4cfda 70%, #ffffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+
+    .avenue-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--maroon-primary);
+      border: 1px solid var(--antique-silver);
+      color: #ffffff !important;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      margin-bottom: 18px;
+    }
+
+    .edition-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(209, 216, 224, 0.5);
+      color: #ffffff !important;
+      font-family: 'Noto Sans Sinhala', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 30px;
+      margin-left: 8px;
+      margin-bottom: 18px;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.92rem;
+      color: #e5e7eb !important;
+      margin-bottom: 24px;
+    }
+
+    .hero-meta-bar span {
+      display: inline-flex;
+      align-items: center;
+      color: #f1f5f9 !important;
+    }
+
+    .hero-meta-bar i {
+      color: var(--antique-silver) !important;
+      margin-right: 6px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.12rem;
+      color: #f8fafc !important;
+      line-height: 1.85;
+      opacity: 0.95;
+      max-width: 620px;
+    }
+
+    /* Hero Cover Frame */
+    .hero-cover-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .hero-cover-img-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid rgba(209, 216, 224, 0.6);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(209, 216, 224, 0.25);
+      transition: transform 0.4s ease;
+      background: #ffffff;
+    }
+
+    .hero-cover-img-wrap:hover {
+      transform: translateY(-4px);
+    }
+
+    .hero-cover-img {
+      width: 100%;
+      height: auto;
+      max-height: 480px;
+      object-fit: contain;
+      display: block;
+      background: #ffffff;
+    }
+
+    /* Main Article Container */
+    .article-outer-wrap {
+      margin-top: -50px;
+      position: relative;
+      z-index: 10;
+      padding-bottom: 90px;
+    }
+
+    .article-content-card {
+      background: #ffffff;
+      border: 1px solid var(--border-ancient);
+      border-radius: 22px;
+      padding: clamp(26px, 5vw, 65px);
+      box-shadow: 0 20px 45px rgba(47, 4, 16, 0.07);
+    }
+
+    .article-lead-text {
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 2.1;
+      color: var(--maroon-primary);
+      border-left: 4px solid var(--maroon-primary);
+      padding-left: 20px;
+      margin-bottom: 28px;
+    }
+
+    .story-paragraph {
+      font-size: 1.08rem;
+      line-height: 2.1;
+      color: #3f3933;
+      margin-bottom: 24px;
+    }
+
+    /* Featured Highlight Quote */
+    .maroon-quote-card {
+      background: linear-gradient(135deg, #fcfaf5 0%, #f7efe4 100%);
+      border: 1px solid var(--border-ancient);
+      border-left: 6px solid var(--maroon-primary);
+      border-radius: 18px;
+      padding: 32px 36px;
+      margin: 40px 0;
+      position: relative;
+      box-shadow: 0 8px 25px rgba(47, 4, 16, 0.05);
+    }
+
+    .maroon-quote-text {
+      font-family: 'Noto Sans Sinhala', serif;
+      font-size: clamp(1.15rem, 2.3vw, 1.45rem);
+      font-weight: 700;
+      color: var(--maroon-primary);
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+
+    /* Four Pillars Action Grid */
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 35px 0 45px;
+    }
+
+    .action-step-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-ancient);
+      border-radius: 16px;
+      padding: 26px 20px;
+      text-align: center;
+      transition: all 0.35s ease;
+      box-shadow: 0 6px 16px rgba(47, 4, 16, 0.05);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .action-step-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--maroon-primary), var(--maroon-light), var(--antique-silver));
+    }
+
+    .action-step-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(47, 4, 16, 0.14);
+      border-color: var(--maroon-primary);
+    }
+
+    .action-icon-wrap {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #ffffff;
+      background: linear-gradient(135deg, #480a1c 0%, #2f0410 100%);
+      border: 2px solid var(--antique-silver);
+      box-shadow: 0 4px 12px rgba(47, 4, 16, 0.25);
+      transition: transform 0.3s ease;
+    }
+
+    .action-step-card:hover .action-icon-wrap {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px var(--silver-glow);
+    }
+
+    .action-step-title {
+      font-family: 'Noto Sans Sinhala', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--maroon-primary);
+      margin-bottom: 8px;
+    }
+
+    .action-step-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+
+    /* Helpline Support Callout */
+    .helpline-box {
+      background: linear-gradient(135deg, #180108 0%, #2f0410 50%, #480a1c 100%);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: clamp(26px, 4vw, 40px);
+      margin: 45px 0 30px;
+      border: 2px solid var(--antique-silver);
+      box-shadow: 0 18px 45px rgba(47, 4, 16, 0.4), 0 0 25px rgba(209, 216, 224, 0.2);
+    }
+
+    .helpline-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(209, 216, 224, 0.3);
+      border-radius: 16px;
+      padding: 22px 16px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .helpline-card:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: var(--antique-silver);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .helpline-card-info {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .helpline-card-title {
+      font-family: 'Noto Sans Sinhala', 'Cinzel', serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+      line-height: 1.45;
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+    }
+
+    .helpline-card-sub {
+      font-size: 0.82rem;
+      color: #d1d8e0;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    .helpline-call-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 30px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.86rem;
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      width: 100%;
+      box-sizing: border-box;
+      white-space: nowrap;
+    }
+
+    .helpline-call-btn i {
+      font-size: 0.82rem;
+      flex-shrink: 0;
+    }
+
+    .btn-helpline-silver {
+      background: linear-gradient(135deg, #ffffff 0%, #e8edf2 40%, #c4cfda 100%);
+      color: var(--maroon-primary) !important;
+      font-weight: 800;
+      border: 1px solid #ffffff;
+      box-shadow: 0 4px 15px rgba(209, 216, 224, 0.35);
+    }
+    .btn-helpline-silver:hover {
+      background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+      box-shadow: 0 6px 22px rgba(255, 255, 255, 0.7);
+      transform: scale(1.02);
+    }
+
+    .btn-return-blog {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 22px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(209, 216, 224, 0.5);
+      color: #ffffff !important;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-return-blog:hover {
+      background: #ffffff;
+      color: var(--maroon-primary) !important;
+      transform: translateX(-4px);
+    }
+
+    .btn-action-greek {
+      font-family: 'Noto Sans Sinhala', 'Cinzel', serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 10px 24px;
+      border-radius: 30px;
+    }
+
+    .lang-switcher-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: #f1ede6;
+      border: 1px solid #ded5c5;
+      border-radius: 20px;
+      color: var(--maroon-primary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .lang-switcher-pill:hover {
+      background: var(--maroon-primary);
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Temple Navbar -->
+  <nav class="navbar navbar-expand-lg temple-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/nav_logo.png" alt="Rotaract ICBT | Create Lasting Impact" class="brand-logo-img">
+      </a>
+      <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+        <i class="fas fa-bars text-white fs-4"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav mx-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">RacFam</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="racfam.html">Executive Committee</a></li>
+              <li><a class="dropdown-item" href="racfam2.html">Board Of Directors</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">What We Do</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="history.html">History</a></li>
+              <li><a class="dropdown-item" href="about.html">About</a></li>
+              <li><a class="dropdown-item" href="formality.html">Formality</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Avenues</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="clubservice.html">Club Service</a></li>
+              <li><a class="dropdown-item" href="commiunityserv.html">Community Service</a></li>
+              <li><a class="dropdown-item" href="internationalser.html">International Service</a></li>
+              <li><a class="dropdown-item" href="profetionald.html">Professional Development</a></li>
+              <li><a class="dropdown-item" href="pr.html">Public Relations</a></li>
+              <li><a class="dropdown-item" href="sportsrecreation.html">Sports and Recreation</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0"><a href="contact.html" class="btn-nav-silver"><i class="fas fa-paper-plane"></i> Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header Section -->
+  <header class="maroon-hero">
+    <div class="container position-relative" style="z-index: 2;">
+      
+      <div class="row align-items-center g-4 g-lg-5">
+        <!-- Left Title & Meta Column -->
+        <div class="col-lg-6" data-aos="fade-right">
+          
+          <a href="blog.html?category=community-service" class="btn-return-blog">
+            <i class="fas fa-arrow-left"></i> සියලු ලිපි වෙත ආපසු (Blog Chronicles)
+          </a>
+
+          <div class="d-flex flex-wrap align-items-center mb-2">
+            <span class="avenue-tag-pill">
+              <i class="fas fa-hands-holding-child"></i> Community Service Avenue
+            </span>
+            <span class="edition-tag-pill">
+              <i class="fas fa-language"></i> සිංහල සංස්කරණය
+            </span>
+          </div>
+
+          <h1 class="hero-main-title">
+            ජීවිතයක් බේරාගත හැකි <br>
+            <span class="silver-gradient-text">සංවාදය</span>
+          </h1>
+
+          <div class="hero-meta-bar">
+            <span><i class="fas fa-calendar-alt"></i> සැප්තැම්බර් 2026</span>
+            <span>&bull;</span>
+            <span><i class="fas fa-ribbon"></i> සියදිවි නසාගැනීම් වැළැක්වීමේ මාසය</span>
+            <span>&bull;</span>
+            <span><i class="fas fa-user-pen"></i> ප්‍රජා සේවා සංස්කාරක මණ්ඩලය</span>
+          </div>
+
+          <p class="hero-subtitle">
+            සැප්තැම්බර් මාසය සියදිවි නසාගැනීම් වැළැක්වීමේ මාසය ලෙස නම් කර ඇත්තේ, අප යමෙකු හොඳින් හඳුනනවා වුවද, ඔවුන් සැබවින්ම මුහුණ දෙන්නේ කුමන ආකාරයේ අභියෝගයන්ටද යන්න අප නොදන්නා බව අපට නිරන්තරයෙන් සිහිපත් කරමිනි.
+          </p>
+
+        </div>
+
+        <!-- Right Hero Cover Image Column -->
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="150">
+          <div class="hero-cover-container">
+            <div class="hero-cover-img-wrap">
+              <img src="assets/blog/suicide_prevention_month_sinhala.jpg" alt="ජාතික සියදිවි නසාගැනීම වැළැක්වීමේ මාසය" class="hero-cover-img">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+  <div class="greek-frieze-border"></div>
+
+  <!-- Main Article Body -->
+  <main class="container article-outer-wrap">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        
+        <article class="article-content-card" data-aos="fade-up">
+
+          <!-- Language Switcher Bar -->
+          <div class="d-flex justify-content-between align-items-center pb-3 mb-4 border-bottom">
+            <span class="small text-muted fw-bold">භාෂාව / மொழி / Language:</span>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="blogPost8.html" class="lang-switcher-pill">
+                <i class="fas fa-language"></i> English Version
+              </a>
+              <a href="blogPost10.html" class="lang-switcher-pill">
+                <i class="fas fa-language"></i> தமிழ் பதிப்பு
+              </a>
+              <span class="lang-switcher-pill active" style="background: var(--maroon-primary); color: #fff;">
+                <i class="fas fa-check"></i> සිංහල සංස්කරණය
+              </span>
+            </div>
+          </div>
+
+          <!-- Lead Paragraph -->
+          <p class="article-lead-text">
+            සැප්තැම්බර් මාසය සියදිවි නසාගැනීම් වැළැක්වීමේ මාසය ලෙස නම් කර ඇත්තේ, අප යමෙකු හොඳින් හඳුනනවා වුවද, ඔවුන් සැබවින්ම මුහුණ දෙන්නේ කුමන ආකාරයේ අභියෝගයන්ටද යන්න අප නොදන්නා බව අපට නිරන්තරයෙන් සිහිපත් කරමිනි.
+          </p>
+
+          <!-- Paragraph 1 -->
+          <p class="story-paragraph">
+            සියදිවි නසාගැනීම යනු කිසියම් නිශ්චිත ස්ත්‍රී පුරුෂ භාවයකට, වයසකට, පසුබිමකට හෝ එක්තරා පුද්ගල කොට්ඨාසයකට පමණක් සීමා වූවක් නොවේ. පිරිමින්ට වඩා කාන්තාවන්ට ප්‍රශ්න වැඩි බව හෝ කාන්තාවන්ට වඩා පිරිමින්ට ප්‍රශ්න වැඩි බව අපට කිසිසේත්ම ප්‍රකාශ කළ නොහැකිය. සෑම පුද්ගලයෙකුම මුහුණ දෙන්නේ එකිනෙකට වෙනස් තත්ත්වයන්ට වන අතර, ඔවුන් වේදනාව විඳගන්නා ආකාරය මෙන්ම ඊට මුහුණ දීමට ගොඩනගා ගන්නා ක්‍රමවේදයන්ද එකිනෙකාට වෙනස් වේ.
+          </p>
+
+          <!-- Paragraph 2 -->
+          <p class="story-paragraph">
+            සමහරු තමන් මුහුණ දෙන අභියෝග පිළිබඳව අන් අය සමග කතාබහ කරති. තවත් සමහරු ඒ පිළිබඳව නිහඬව සිටිති. තවත් සමහරු ආගමික වතාවත්වල යෙදෙති; කාර්යබහුල වෙති; ආදරණීයයන් සමග කාලය ගත කරති; එසේත් නැතිනම් හුදෙක් තම දෛනික ජීවිතය සාමාන්‍ය පරිදි ඉදිරියට ගෙන යාමට උත්සාහ කරති. සමහර අවස්ථාවලදී, පිටතින් ඉතාමත් සතුටින් පෙනෙන පුද්ගලයෙකු පවා කිසිදා කිසිවෙකුට නොපැවසූ බරපතළ මානසික පීඩනයක් හදවතේ රඳවාගෙන සිටිනවා විය හැකිය.
+          </p>
+
+          <!-- Paragraph 3 -->
+          <p class="story-paragraph">
+            ගැටලු දිගින් දිගටම එකතු වී, තවදුරටත් ඒවා දරාගත නොහැකි යැයි හැඟෙන විට, එම වේදනාව පාලනය කළ නොහැකි සීමාවකට ඔවුන් පත්විය හැකිය. එබැවින්, සියදිවි නසාගැනීම් වැළැක්වීමේ උත්සාහයන් ආරම්භ විය යුත්තේ යමෙකු දැඩි අර්බුදකාරී තත්ත්වයකට පත් වූ පසුව පමණක් නොවේ. ඒ සඳහා බියකින් තොරව තම ගැටලු විවෘතව පැවසීමට තරම් ආරක්ෂිත පරිසරයක් නිර්මාණය කිරීමෙන් එය ආරම්භ විය යුතුය.
+          </p>
+
+          <!-- Highlight Quote 1 -->
+          <div class="maroon-quote-card" data-aos="fade-up">
+            <div class="d-flex align-items-center gap-3">
+              <i class="fas fa-quote-left fs-1" style="color: var(--maroon-primary); opacity: 0.85;"></i>
+              <p class="maroon-quote-text">
+                “ඇයි ඔවුන් ඒ ගැන කිසිවෙකුටවත් නොකිව්වේ?” කියා විමසනවා වෙනුවට, “තමන්ට කිසිදු දෝෂාරෝපණයක් හෝ විනිශ්චයක් නොකර සවන් දෙන අයෙකු සිටින බව ඔවුන්ට හැඟුණාද?” කියා අප අපෙන්ම විමසිය යුතුය.
+              </p>
+            </div>
+          </div>
+
+          <!-- Paragraph 4 -->
+          <p class="story-paragraph">
+            සියදිවි නසාගැනීම සම්බන්ධයෙන් සෑම ආගමකම පාහේ විවිධ ඉගැන්වීම් සහ අර්ථකථනයන් පවතී. කෙසේ වෙතත්, අපගේ විශ්වාසයන් කුමක් වුවද, සියදිවි නසාගැනීමේ සිතුවිලිවලින් පෙළෙන පුද්ගලයෙකු එම තීරණාත්මක මොහොතේ තනි නොවිය යුතුය.
+          </p>
+
+          <!-- Paragraph 5 -->
+          <p class="story-paragraph">
+            එමෙන්ම සියදිවි නසාගැනීම හෝ තමන්ටම හානි කරගැනීම “නිවටකමක්” හෝ “වීරකමක්” ලෙස හැඳින්වීමෙන් අප වැළකී සිටිය යුතුය. එවැනි ලේබල් ඇලවීම මගින් එම පුද්ගලයා මුහුණ දෙන මානසික තත්ත්වයේ බරපතළකම හෝ සංකීර්ණත්වය නිරූපණය නොවේ. මෙහිදී සැබවින්ම වැදගත් වන්නේ, එම තත්ත්වයට හේතු වූ වේදනාව හඳුනාගෙන, ඔවුන්ට අවශ්‍ය සහයෝගය ලබාගැනීමට උපකාර කිරීමයි.
+          </p>
+
+          <!-- Paragraph 6 -->
+          <p class="story-paragraph">
+            අනෙකෙකුට උපකාර කිරීම යනු සෑමවිටම මුදල් වියදම් කිරීම, වෘත්තීය මට්ටමේ දැනුමක් තිබීම හෝ සෑම ප්‍රශ්නයකටම නිවැරදිම පිළිතුර ළඟ තබාගෙන සිටීමම නොවේ.
+          </p>
+
+          <!-- Paragraph 7 - Emphasis -->
+          <p class="story-paragraph fw-bold fs-5 mb-3" style="color: var(--maroon-primary) !important;">
+            <i class="fas fa-heart text-danger me-2"></i> සමහර අවස්ථාවලදී, ඒ සඳහා කළ යුත්තේ හුදෙක් සාවධානව සවන් දීම පමණි.
+          </p>
+
+          <p class="story-paragraph">
+            යමෙකු තමන් දැඩි මානසික පීඩාවකින් පසුවන බව පැවසූ විට ඊට සවන් දෙන්න. යමෙකු හදිසියේම ඔබෙන් ඈත් වන බවක් හැඟේ නම් ඔවුන් පිළිබඳව සොයා බලන්න. ඔවුන්ගේ සුවදුක් විමසන්න; එමෙන්ම තම සිතැඟි විවෘතව ප්‍රකාශ කිරීමට ඔවුන්ට නිදහස් ඉඩකඩක් ලබා දෙන්න.
+          </p>
+
+          <p class="story-paragraph">
+            යමෙකු ගැන සොයා බැලීමට ඔබ ඔවුන්ගේ සමීපතම මිතුරාම විය යුතු නැත. එය පවුලේ සාමාජිකයෙකු, රැකියා ස්ථානයේ සගයෙකු, පන්ති කාමරයේ යහළුවෙකු, අසල්වැසියෙකු හෝ ඔබ දිනපතා දුටුවද පෞද්ගලිකව හොඳින් නොහඳුනන අයෙකු වුවද විය හැකිය.
+          </p>
+
+          <!-- Highlight Quote 2 -->
+          <div class="maroon-quote-card" data-aos="fade-up">
+            <div class="d-flex align-items-center gap-3">
+              <i class="fas fa-quote-left fs-1" style="color: var(--maroon-primary); opacity: 0.85;"></i>
+              <p class="maroon-quote-text">
+                “කෙනෙකුගේ සිනහව පිටුපස සඟවා ඇති වේදනාව කෙතරම්දැයි අප කිසිදා නොදන්නවා විය හැකිය.”
+              </p>
+            </div>
+          </div>
+
+          <!-- The Four Actions Section -->
+          <div class="text-center my-4 pt-2">
+            <span class="badge px-3 py-2" style="background: var(--maroon-primary); color: #fff; font-family: 'Noto Sans Sinhala', 'Cinzel', serif; letter-spacing: 0.5px; border: 1px solid var(--antique-silver);">ජීවිතයක් සුරකින සරල පියවර</span>
+            <h3 class="greek-title mt-2" style="color: var(--maroon-primary); font-size: 1.65rem; font-family: 'Noto Sans Sinhala', serif;">
+              සියදිවි නසාගැනීම් වැළැක්වීමේ මූලික පියවර 4
+            </h3>
+          </div>
+
+          <div class="actions-grid">
+            <div class="action-step-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="action-icon-wrap">
+                <i class="fas fa-eye"></i>
+              </div>
+              <h4 class="action-step-title">වෙනස හඳුනාගන්න</h4>
+              <p class="action-step-desc">හැසිරීමේ වෙනස්කම්, හුදෙකලා වීම හෝ යමෙකු දැඩි පීඩාවකින් පසුවන බවට ලැබෙන සියුම් ඉඟි පිළිබඳව අවධානය යොමු කරන්න.</p>
+            </div>
+
+            <div class="action-step-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="action-icon-wrap">
+                <i class="fas fa-comment-dots"></i>
+              </div>
+              <h4 class="action-step-title">විමසන්න</h4>
+              <p class="action-step-desc">කරුණාවෙන් හා සුහදව ඔවුන්ගේ සුවදුක් විමසන්න. ඔවුන් මුහුණ දෙන තත්ත්වය ගැන විවෘතව කතා කිරීමට දිරිගන්වන්න.</p>
+            </div>
+
+            <div class="action-step-card" data-aos="fade-up" data-aos-delay="300">
+              <div class="action-icon-wrap">
+                <i class="fas fa-ear-listen"></i>
+              </div>
+              <h4 class="action-step-title">සවන් දෙන්න</h4>
+              <p class="action-step-desc">විනිශ්චය කිරීමකින් හෝ දොස් පැවරීමකින් තොරව සාවධානව සවන් දෙන්න. ඔවුන්ට ඔබගේ සහයෝගය ඇති බව දැනෙන්නට හරින්න.</p>
+            </div>
+
+            <div class="action-step-card" data-aos="fade-up" data-aos-delay="400">
+              <div class="action-icon-wrap">
+                <i class="fas fa-hand-holding-heart"></i>
+              </div>
+              <h4 class="action-step-title">ළඟින් රැඳෙන්න</h4>
+              <p class="action-step-desc">ඔවුන් සමග රැඳී සිටින්න. ඔවුන්ව විශ්වාසවන්ත පුද්ගලයින්, වෘත්තීය උපදේශකයින් හෝ උපකාරක සේවාවන් වෙත යොමු කරන්න.</p>
+            </div>
+          </div>
+
+          <!-- Helpline & Support Resources Card (Hellenic Maroon & Silver Theme) -->
+          <div class="helpline-box" data-aos="fade-up">
+            <div class="d-flex align-items-center gap-3 mb-4 pb-2 border-bottom border-light border-opacity-25">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: #000; border: 2px solid var(--antique-silver); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; box-shadow: 0 0 15px rgba(209,216,224,0.3);">
+                <i class="fas fa-phone-volume text-white"></i>
+              </div>
+              <div>
+                <h5 class="text-white mb-0 fw-bold" style="font-size: 1.2rem; font-family: 'Noto Sans Sinhala', serif;">ඔබ කිසිවිටෙකත් තනි වී නැත &bull; හදිසි උපකාරක සේවා</h5>
+                <small class="text-light opacity-75">නොමිලේ, රහස්‍යභාවය සුරකිමින් ඕනෑම මොහොතක සහය ලබාගැනීමට:</small>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-lg-4 col-md-6">
+                <div class="helpline-card">
+                  <div class="helpline-card-info">
+                    <h6 class="helpline-card-title">ජාතික මානසික සුවතා සේවාව</h6>
+                    <p class="helpline-card-sub">ශ්‍රී ලංකාව &bull; 24/7 නොමිලේ</p>
+                  </div>
+                  <a href="tel:1926" class="helpline-call-btn btn-helpline-silver">
+                    <i class="fas fa-phone-alt"></i> Call 1926
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6">
+                <div class="helpline-card">
+                  <div class="helpline-card-info">
+                    <h6 class="helpline-card-title">සුමිත්‍රයෝ සංවිධානය</h6>
+                    <p class="helpline-card-sub">චිත්තවේගීය සහන සහයෝගය</p>
+                  </div>
+                  <a href="tel:0112696666" class="helpline-call-btn btn-helpline-silver">
+                    <i class="fas fa-phone-alt"></i> Call 011 269 6666
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-12">
+                <div class="helpline-card">
+                  <div class="helpline-card-info">
+                    <h6 class="helpline-card-title">CCCline හදිසි සහන සේවාව</h6>
+                    <p class="helpline-card-sub">ගාස්තු රහිත 24/7 සේවාව</p>
+                  </div>
+                  <a href="tel:1333" class="helpline-call-btn btn-helpline-silver">
+                    <i class="fas fa-phone-alt"></i> Call 1333
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Footer Navigation & Share Section -->
+          <div class="pt-4 mt-5 border-top d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
+            <a href="blog.html?category=community-service" class="btn btn-greek btn-silver btn-action-greek">
+              <i class="fas fa-arrow-left me-2"></i> සියලු ලිපි වෙත ආපසු
+            </a>
+
+            <div class="d-flex align-items-center gap-2">
+              <span class="small text-muted fw-bold me-1">Share:</span>
+              <a href="https://www.facebook.com/rotaracticbt" target="_blank" class="coin-social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/rotaracticbt/" target="_blank" class="coin-social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/rotaract-icbt" target="_blank" class="coin-social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Temple Base Footer -->
+  <footer class="temple-base-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <img src="assets/footer_badge.png" alt="Rotaract Emblem" style="width: 54px; height: 54px; border-radius: 50%; box-shadow: 0 0 15px rgba(209, 216, 224, 0.4);">
+            <div>
+              <h5 class="greek-title text-white mb-0">Rotaract Club of ICBT</h5>
+              <small class="text-light opacity-75">District 3220 &bull; Chartered 2018</small>
+            </div>
+          </div>
+          <p class="small text-light opacity-75">
+            Dedicated to transforming collegiate ambitions into sustainable community actions through leadership, international goodwill, and unswerving fellowship.
+          </p>
+        </div>
+        <div class="col-sm-6 col-lg-2 footer-column-pillar">
+          <h5 class="footer-heading">Portals</h5>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="history.html">Our History</a></li>
+            <li><a href="awards.html">Awards</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3 footer-column-pillar">
+          <h5 class="footer-heading">RacFam</h5>
+          <ul class="footer-links-list">
+            <li><a href="racfam.html">Executive Committee</a></li>
+            <li><a href="racfam2.html">Board of Directors</a></li>
+            <li><a href="clubservice.html">Club Service</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 footer-column-pillar">
+          <h5 class="footer-heading">Council Heralds</h5>
+          <div class="d-flex flex-wrap mb-3">
+            <a href="https://www.facebook.com/rotaracticbt" target="_blank" class="coin-social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/rotaracticbt/" target="_blank" class="coin-social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/rotaract-icbt" target="_blank" class="coin-social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@rotaractcluboficbt5506" target="_blank" class="coin-social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <a href="contact.html" class="btn btn-greek btn-silver btn-sm w-100"><i class="fas fa-paper-plane me-1"></i> Contact Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-stylobate-bottom text-center">
+      <div class="container">
+        <p class="mb-0">&copy; 2026 Rotaract Club of ICBT &bull; Chartered under Rotary International District 3220. All Hellenic Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="js/greek-theme.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
+</body>
+</html>
