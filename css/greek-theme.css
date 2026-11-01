@@ -1,9 +1,9 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    ROTARACT CLUB - ANCIENT GREEK MYTHOLOGY & HELLENIC THEME
    Palette: Royal Crimson (#2f0410), Hellenic Beige, Radiant Silver & Onyx Black
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+/* Google Fonts loaded non-blocking via <link> tags in each HTML page */
 
 :root {
   /* Crimson Wine & Royal Greek Palette */
@@ -2156,7 +2156,7 @@ section.bg-light {
 }
 
 /* ==========================================================================
-   PERFORMANCE & UNIVERSAL IMAGE CENTRALIZATION
+   PERFORMANCE FIX - Clean image rendering
    ========================================================================== */
 img {
   max-width: 100%;
@@ -2164,48 +2164,17 @@ img {
   vertical-align: middle;
 }
 
-/* Universal Image Centering Across All Pages & Cards */
-.img-center,
-.card-img-top,
+/* Center non-portrait card images */
 .artifact-img-wrap img,
-.leader-img,
-.mentor-img,
-.fame-img,
 .mosaic-item img,
 .manuscript-img-wrap img,
 .avenue-project-img-wrap img,
 .hero-cover-img,
 .story-inline-img,
 .gallery-frame-img {
-  display: block !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  object-position: center center !important;
-}
-
-/* Ensure all card image wrapper containers centrally align their contents */
-.artifact-img-wrap,
-.avenue-project-img-wrap,
-.manuscript-img-wrap,
-.leader-portrait-wrap,
-.mentor-portrait-wrap,
-.fame-portrait-wrap,
-.hero-cover-img-wrap,
-.gallery-frame-wrap {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-}
-
-/* Performance Rendering & Layout Stability */
-img,
-.artifact-img-wrap img,
-.mosaic-item img,
-.manuscript-img-wrap img,
-.leader-img {
-  image-rendering: -webkit-optimize-contrast;
-  content-visibility: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
