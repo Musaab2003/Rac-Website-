@@ -367,7 +367,7 @@ h1, h2, h3, h4, .greek-heading {
   background: 
     radial-gradient(ellipse at 50% 30%, rgba(209, 216, 224, 0.18) 0%, transparent 70%),
     linear-gradient(180deg, rgba(20, 1, 7, 0.92) 0%, rgba(47, 4, 16, 0.95) 100%),
-    url("../assets/newh3.jpg") center center / cover no-repeat;
+    url("../assets/hero-bg.jpg") center center / cover no-repeat;
   color: #fff;
   text-align: center;
   padding: 120px 20px 80px;
