@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -59,6 +59,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- AOS Scroll Animations -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <!-- High Priority Image Preloads for Instant Render -->
+  <link rel="preload" as="image" href="assets/newh3.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/nav_logo.png" fetchpriority="high">
   <!-- Custom Greek Mythology Theme CSS (#2f0410, Beige, Silver & Onyx Black) -->
   <link rel="stylesheet" href="css/greek-theme.css">
 </head>
@@ -581,7 +584,7 @@
         <div class="col-md-8 col-lg-5 col-xl-4 artifact-item" data-category="installation" data-aos="fade-up" data-aos-delay="100">
           <div class="artifact-frame">
             <div class="artifact-img-wrap" style="height: 400px; background: #28030d; position: relative; display: flex; align-items: center; justify-content: center;">
-              <img loading="lazy" decoding="async" src="assets/installation_9th.jpg" alt="9th Installation Ceremony" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block; margin: 0 auto; object-position: center center;">
+              <img fetchpriority="high" decoding="async" src="assets/installation_9th.jpg" alt="9th Installation Ceremony" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block; margin: 0 auto; object-position: center center;">
               <span class="artifact-status-badge"><i class="fas fa-crown me-1 text-warning"></i> 9th Installation</span>
             </div>
             <div class="artifact-plaque">

@@ -356,4 +356,95 @@ document.addEventListener('DOMContentLoaded', function () {
       setTimeout(idlePrefetch, 1000);
     }
   })();
+
+  // 9. Instant & Butter-Smooth Image Orchestrator (Eliminates lag & abrupt loading)
+  (function initSmoothImageEngine() {
+    const markImageReady = (img) => {
+      img.classList.add('is-loaded');
+      const container = img.closest('.artifact-img-wrap, .mosaic-item, .manuscript-img-wrap, .avenue-project-img-wrap, .gallery-frame, .leader-portrait-wrap, .blog-img-wrap');
+      if (container) {
+        container.classList.add('img-ready');
+      }
+    };
+
+    const processImage = (img) => {
+      if (img.classList.contains('smooth-fade-img')) return;
+      if (img.classList.contains('brand-logo-img') || img.classList.contains('lightbox-img') || (img.src && img.src.includes('flagcdn'))) {
+        return;
+      }
+
+      img.classList.add('smooth-fade-img');
+
+      // If already cached or rendered by browser, reveal instantly without transition delay
+      if (img.complete && img.naturalWidth > 0) {
+        markImageReady(img);
+      } else {
+        // Asynchronously decode off main thread to prevent scrolling jitter and frame drops
+        if (typeof img.decode === 'function') {
+          img.decode()
+            .then(() => markImageReady(img))
+            .catch(() => {
+              img.addEventListener('load', () => markImageReady(img), { once: true });
+            });
+        } else {
+          img.addEventListener('load', () => markImageReady(img), { once: true });
+        }
+        img.addEventListener('error', () => markImageReady(img), { once: true });
+      }
+    };
+
+    // Process all existing images
+    const images = document.querySelectorAll('img');
+    images.forEach(processImage);
+
+    // Smart Ahead-Of-Time Preloader:
+    // Fetches and decodes images 600px BEFORE entering viewport so they appear smoothly at once
+    if ('IntersectionObserver' in window) {
+      const aheadObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.loading === 'lazy') {
+              img.loading = 'eager';
+            }
+            if (typeof img.decode === 'function' && !img.complete) {
+              img.decode().then(() => markImageReady(img)).catch(() => {});
+            }
+            observer.unobserve(img);
+          }
+        });
+      }, {
+        rootMargin: '600px 0px 600px 0px'
+      });
+
+      document.querySelectorAll('img.smooth-fade-img:not(.is-loaded)').forEach(img => {
+        aheadObserver.observe(img);
+      });
+    }
+
+    // Dynamic Content Observer (e.g. dynamic blog list, client filter changes)
+    if ('MutationObserver' in window) {
+      const mutObserver = new MutationObserver(mutations => {
+        mutations.forEach(mut => {
+          mut.addedNodes.forEach(node => {
+            if (node.nodeType === 1) {
+              if (node.tagName === 'IMG') {
+                processImage(node);
+              } else if (node.querySelectorAll) {
+                node.querySelectorAll('img').forEach(processImage);
+              }
+            }
+          });
+        });
+      });
+      mutObserver.observe(document.body, { childList: true, subtree: true });
+    }
+
+    // Safety fallback: Ensure any slow network response gracefully reveals within 1.2s
+    setTimeout(() => {
+      document.querySelectorAll('img.smooth-fade-img:not(.is-loaded)').forEach(img => {
+        markImageReady(img);
+      });
+    }, 1200);
+  })();
 });
