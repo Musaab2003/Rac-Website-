@@ -239,6 +239,7 @@
               <form id="greekContactForm" action="https://formsubmit.co/rotaracticbt@gmail.com" method="POST">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://racicbt.org/contact.html?status=success">
                 <input type="hidden" name="_subject" value="New Inquiry via racicbt.org (Contact Page)">
                 <div class="row g-3 mb-3">
                   <div class="col-md-6">
@@ -373,9 +374,22 @@
   <!-- AOS Animation JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
   <!-- Greek Theme Custom JS -->
-  <script src="js/greek-theme.js" defer></script>
+  <script src="js/greek-theme-v2.js" defer></script>
   <script>
     AOS.init({ duration: 800, once: true });
+    if (window.location.search.includes('status=success')) {
+      const sb = document.getElementById('contactFormStatus');
+      if (sb) {
+        sb.style.display = 'block';
+        sb.innerHTML = `
+          <div class="alert alert-success border-0 text-white p-4 rounded-3 shadow-lg mt-3" style="background: linear-gradient(135deg, rgba(25, 135, 84, 0.95), rgba(15, 81, 50, 0.95)); border-left: 4px solid #ffffff !important;">
+            <h6 class="fw-bold mb-1 text-white" style="font-family: 'Cinzel', serif;"><i class="fas fa-check-circle me-1 text-warning"></i> Sacred Missive Dispatched!</h6>
+            <p class="small mb-0 text-light">Your missive has been transmitted directly to <strong>rotaracticbt@gmail.com</strong>. The Council of Archons will respond to your email swiftly.</p>
+          </div>
+        `;
+        sb.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   </script>
 </body>
 </html>
