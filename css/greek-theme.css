@@ -1,3 +1,4 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 /* ==========================================================================
    ROTARACT CLUB - ANCIENT GREEK MYTHOLOGY & HELLENIC THEME
    Palette: Royal Crimson (#2f0410), Hellenic Beige, Radiant Silver & Onyx Black
@@ -2244,3 +2245,34 @@ img[fetchpriority="high"]:not(.leader-img) {
 
 
 
+
+
+/* ==========================================================================
+   BULLETPROOF VISIBILITY GUARANTEE - NEVER HIDE CONTENT OR IMAGES
+   ========================================================================== */
+[data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+img {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+img.smooth-fade-img {
+  opacity: 1 !important;
+}
+
+.artifact-img-wrap,
+.mosaic-item,
+.manuscript-img-wrap,
+.avenue-project-img-wrap,
+.gallery-frame,
+.leader-portrait-wrap,
+.blog-img-wrap {
+  animation: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+}
