@@ -376,29 +376,8 @@ h1, h2, h3, h4, .greek-heading {
 
 .hero-columns-left,
 .hero-columns-right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100px;
-  pointer-events: none;
-  opacity: 0.18;
-  background-image: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 16px,
-    rgba(255, 255, 255, 0.15) 16px,
-    rgba(255, 255, 255, 0.15) 32px
-  );
-}
-
-.hero-columns-left {
-  left: 0;
-  border-right: 3px double var(--antique-silver);
-}
-
-.hero-columns-right {
-  right: 0;
-  border-left: 3px double var(--antique-silver);
+  display: none !important;
+  border: none !important;
 }
 
 .hero-badge-tag {
