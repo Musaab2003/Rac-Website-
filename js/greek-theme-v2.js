@@ -567,4 +567,116 @@ document.addEventListener('DOMContentLoaded', function () {
       revealTargets.forEach(el => el.classList.add('revealed'));
     }
   })();
+
+  // 11. Sacred Hellenic Embers & Delphic Torchlight Engine (Live Ambient Effects)
+  (function initHellenicAtmosphere() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    // 11a. Delphic Torch Aura (follows cursor smoothly)
+    const torchLayer = document.createElement('div');
+    torchLayer.className = 'delphic-torch-aura';
+    document.body.appendChild(torchLayer);
+
+    let mouseActive = false;
+    window.addEventListener('mousemove', function (e) {
+      document.documentElement.style.setProperty('--torch-x', e.clientX + 'px');
+      document.documentElement.style.setProperty('--torch-y', e.clientY + 'px');
+      if (!mouseActive) {
+        mouseActive = true;
+        torchLayer.style.opacity = '1';
+      }
+    }, { passive: true });
+
+    // 11b. Sacred Olympic Embers Particle Canvas
+    const canvas = document.createElement('canvas');
+    canvas.id = 'greek-embers-canvas';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }, { passive: true });
+
+    // Embers count: 28-36 particles (super lightweight, 0 lag, 60fps)
+    const particleCount = Math.min(36, Math.max(18, Math.floor(width / 45)));
+    const particles = [];
+
+    const colors = [
+      'rgba(255, 190, 70, ',  // Olympic Gold
+      'rgba(240, 110, 40, ',  // Sacred Hearth Flame
+      'rgba(255, 235, 180, ', // Warm Starlight
+      'rgba(215, 225, 240, '  // Radiant Silver Spark
+    ];
+
+    class Ember {
+      constructor() {
+        this.reset(true);
+      }
+      reset(initial = false) {
+        this.x = Math.random() * width;
+        this.y = initial ? Math.random() * height : height + Math.random() * 20;
+        this.size = Math.random() * 2.2 + 1.2;
+        this.speedY = Math.random() * 0.65 + 0.35;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.colorPrefix = colors[Math.floor(Math.random() * colors.length)];
+        this.baseAlpha = Math.random() * 0.55 + 0.25;
+        this.alpha = this.baseAlpha;
+        this.sway = Math.random() * Math.PI * 2;
+        this.swaySpeed = Math.random() * 0.02 + 0.01;
+      }
+      update() {
+        this.y -= this.speedY;
+        this.sway += this.swaySpeed;
+        this.x += this.speedX + Math.sin(this.sway) * 0.35;
+
+        // Fade out near top
+        if (this.y < height * 0.18) {
+          this.alpha = (this.y / (height * 0.18)) * this.baseAlpha;
+        }
+
+        if (this.y < -10 || this.x < -20 || this.x > width + 20) {
+          this.reset(false);
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.colorPrefix + Math.max(0, this.alpha) + ')';
+        ctx.shadowColor = this.colorPrefix + '0.8)';
+        ctx.shadowBlur = this.size * 3;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Ember());
+    }
+
+    let isRunning = true;
+    document.addEventListener('visibilitychange', () => {
+      isRunning = !document.hidden;
+      if (isRunning) requestAnimationFrame(loop);
+    });
+
+    function loop() {
+      if (!isRunning) return;
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+      }
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  })();
 });

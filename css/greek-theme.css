@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 /* ==========================================================================
    ROTARACT CLUB - ANCIENT GREEK MYTHOLOGY & HELLENIC THEME
    Palette: Royal Crimson (#2f0410), Hellenic Beige, Radiant Silver & Onyx Black
@@ -2516,4 +2516,175 @@ section.bg-light,
   background: rgba(255, 255, 255, 0.96) !important;
   border-color: rgba(212, 107, 34, 0.6) !important;
   box-shadow: 0 16px 38px rgba(47, 4, 16, 0.14), 0 0 20px rgba(212, 107, 34, 0.15) !important;
+}
+
+/* ==========================================================================
+   HELLENIC LIVING EFFECTS & HARMONY BLEND ENGINE
+   Olympic Embers, Delphic Torchlight, Animated Frieze & Sacred Gleam
+   ========================================================================== */
+
+/* 1. Animated Greek Key Frieze Ribbons */
+.greek-frieze-border {
+  animation: greekFriezeScroll 32s linear infinite !important;
+}
+.greek-frieze-border-crimson {
+  animation: greekFriezeScrollCrimson 32s linear infinite !important;
+}
+@keyframes greekFriezeScroll {
+  0% { background-position: 0 center; }
+  100% { background-position: 480px center; }
+}
+@keyframes greekFriezeScrollCrimson {
+  0% { background-position: 0 center; }
+  100% { background-position: -480px center; }
+}
+
+/* 2. Olympic Ember Canvas Layer */
+#greek-embers-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+/* 3. Delphic Torchlight Cursor Aura */
+.delphic-torch-aura {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.75;
+  background: radial-gradient(
+    circle 380px at var(--torch-x, 50vw) var(--torch-y, 50vh),
+    rgba(255, 205, 120, 0.08) 0%,
+    rgba(215, 100, 40, 0.04) 40%,
+    transparent 75%
+  );
+  transition: opacity 0.5s ease;
+}
+
+/* 4. Living Stat Ribbon Icons (Sacred Olympic Flame & Gleams) */
+.stat-icon.fa-fire-flame-curved {
+  display: inline-block;
+  color: #ff9800 !important;
+  animation: sacredOlympicFlame 2.2s ease-in-out infinite alternate !important;
+}
+@keyframes sacredOlympicFlame {
+  0% {
+    transform: scale(1) translateY(0);
+    filter: drop-shadow(0 0 4px rgba(255, 152, 0, 0.6));
+  }
+  50% {
+    transform: scale(1.18) translateY(-3px) rotate(-3deg);
+    filter: drop-shadow(0 0 14px rgba(255, 193, 7, 0.95)) drop-shadow(0 0 25px rgba(230, 81, 0, 0.6));
+  }
+  100% {
+    transform: scale(1.08) translateY(-1px) rotate(2deg);
+    filter: drop-shadow(0 0 8px rgba(255, 179, 0, 0.75));
+  }
+}
+
+.stat-icon.fa-hourglass-half {
+  display: inline-block;
+  animation: sacredHourglassTurn 6s ease-in-out infinite !important;
+}
+@keyframes sacredHourglassTurn {
+  0%, 75% { transform: rotate(0deg); }
+  85%, 100% { transform: rotate(180deg); }
+}
+
+.stat-icon.fa-trophy {
+  display: inline-block;
+  animation: sacredTrophyGleam 4s ease-in-out infinite !important;
+}
+@keyframes sacredTrophyGleam {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4)); }
+  50% { filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 22px rgba(209, 216, 224, 0.8)); transform: scale(1.08); }
+}
+
+.stat-icon.fa-users-gear {
+  display: inline-block;
+  animation: sacredGearsPulse 3.5s ease-in-out infinite alternate !important;
+}
+@keyframes sacredGearsPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.12); filter: drop-shadow(0 0 10px rgba(209, 216, 224, 0.7)); }
+}
+
+/* 5. Living Silver Sheen on Buttons */
+.btn-greek,
+.btn-nav-silver {
+  position: relative;
+  overflow: hidden;
+}
+.btn-greek::after,
+.btn-nav-silver::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -70%;
+  width: 50%;
+  height: 220%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  animation: sacredSheenSweep 5s ease-in-out infinite;
+}
+@keyframes sacredSheenSweep {
+  0%, 70% { left: -70%; }
+  100% { left: 150%; }
+}
+
+/* 6. Harmonized Hellenic Stone & Papyrus Finish for All Cards */
+.stone-tablet,
+.avenue-overview-stela,
+.contact-stele-card,
+.avenue-card,
+.avenue-project-card,
+.manuscript-card,
+.blog-card,
+.award-card,
+.leader-coin-card,
+.chronicle-card {
+  background: linear-gradient(155deg, rgba(255, 253, 248, 0.92) 0%, rgba(250, 245, 235, 0.88) 100%) !important;
+  border: 1px solid rgba(198, 178, 148, 0.75) !important;
+  box-shadow: 0 12px 30px rgba(47, 4, 16, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease !important;
+}
+
+.stone-tablet:hover,
+.avenue-card:hover,
+.contact-stele-card:hover,
+.avenue-project-card:hover,
+.blog-card:hover,
+.award-card:hover,
+.leader-coin-card:hover,
+.chronicle-card:hover {
+  transform: translateY(-6px) !important;
+  background: rgba(255, 255, 255, 0.97) !important;
+  border-color: rgba(212, 107, 34, 0.7) !important;
+  box-shadow: 0 18px 42px rgba(47, 4, 16, 0.15), 0 0 25px rgba(212, 107, 34, 0.16) !important;
+}
+
+/* 7. Hellenic Section Titles & Subtitles */
+.section-title {
+  color: var(--greek-crimson) !important;
+  text-shadow: 0 2px 4px rgba(47, 4, 16, 0.12);
+  letter-spacing: 0.06em;
+}
+.section-tag {
+  color: #a3223f !important;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
