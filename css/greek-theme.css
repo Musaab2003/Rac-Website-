@@ -68,18 +68,17 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--greek-beige-light);
+  background-color: #faf7f0;
   color: var(--text-dark);
   line-height: 1.8;
   overflow-x: hidden;
   max-width: 100vw;
   width: 100%;
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(209, 216, 224, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(47, 4, 16, 0.03) 0%, transparent 40%),
-    linear-gradient(to right, rgba(218, 208, 191, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(218, 208, 191, 0.25) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 45px 45px, 45px 45px;
+    radial-gradient(circle at 15% 15%, rgba(209, 216, 224, 0.25) 0%, transparent 55%),
+    radial-gradient(circle at 85% 85%, rgba(72, 10, 28, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.75) 0%, transparent 100%);
+  background-attachment: fixed;
 }
 
 h1, h2, h3, h4, .greek-heading {
@@ -366,8 +365,8 @@ h1, h2, h3, h4, .greek-heading {
   align-items: center;
   justify-content: center;
   background: 
-    radial-gradient(ellipse at 50% 30%, rgba(209, 216, 224, 0.18) 0%, transparent 70%),
-    linear-gradient(180deg, rgba(20, 1, 7, 0.92) 0%, rgba(47, 4, 16, 0.95) 100%),
+    radial-gradient(ellipse at 50% 35%, rgba(209, 216, 224, 0.15) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(20, 1, 7, 0.65) 0%, rgba(47, 4, 16, 0.78) 55%, rgba(18, 1, 6, 0.95) 100%),
     url("../assets/hero-bg.jpg") center center / cover no-repeat;
   color: #fff;
   text-align: center;
