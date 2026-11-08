@@ -68,20 +68,22 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: #f6f1e5;
+  background-color: #f2ebd9;
   color: var(--text-dark);
   line-height: 1.8;
   overflow-x: hidden;
   max-width: 100vw;
   width: 100%;
-  /* Promethean Sacred Flame & Olympian Marble Texture */
+  /* Ancient Greek Weathered Parchment & Marble Texture with Promethean Embers */
   background-image: 
-    radial-gradient(circle at 10% 18%, rgba(235, 94, 40, 0.08) 0%, transparent 35%),
-    radial-gradient(circle at 90% 32%, rgba(72, 10, 28, 0.09) 0%, transparent 40%),
-    radial-gradient(circle at 20% 65%, rgba(245, 158, 11, 0.07) 0%, transparent 38%),
-    radial-gradient(circle at 82% 82%, rgba(220, 38, 38, 0.06) 0%, transparent 42%),
-    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.55) 0%, transparent 85%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M60 0l60 60-60 60L0 60z' fill='%232f0410' fill-opacity='0.012'/%3E%3Ccircle cx='60' cy='60' r='18' fill='%23d97706' fill-opacity='0.01'/%3E%3C/svg%3E");
+    radial-gradient(circle at 12% 18%, rgba(235, 94, 40, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 88% 30%, rgba(72, 10, 28, 0.09) 0%, transparent 45%),
+    radial-gradient(circle at 25% 70%, rgba(245, 158, 11, 0.07) 0%, transparent 42%),
+    radial-gradient(circle at 75% 85%, rgba(220, 38, 38, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 80%),
+    url("../assets/greek-parchment-bg.jpg");
+  background-repeat: repeat;
+  background-size: cover;
   background-attachment: fixed;
 }
 
@@ -2442,4 +2444,39 @@ section.bg-light {
   .section-subtitle {
     font-size: 0.92rem !important;
   }
+}
+
+/* ==========================================================================
+   ANCIENT GREEK PARCHMENT PASS-THROUGH FOR SECTIONS
+   ========================================================================== */
+section.bg-white,
+section.bg-light,
+.bg-white,
+.bg-light {
+  background-color: transparent !important;
+}
+
+/* Give all content cards an authentic ancient Greek papyrus marble finish */
+.avenue-overview-stela,
+.contact-stele-card,
+.avenue-card,
+.avenue-project-card,
+.manuscript-card,
+.blog-card,
+.award-card,
+.leader-coin-card {
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 246, 238, 0.92) 60%, rgba(244, 237, 224, 0.92) 100%) !important;
+  border: 1px solid rgba(214, 203, 185, 0.85) !important;
+  box-shadow: 0 10px 30px rgba(47, 4, 16, 0.07), 0 0 20px rgba(235, 94, 40, 0.05) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.avenue-card:hover,
+.contact-stele-card:hover,
+.avenue-project-card:hover,
+.award-card:hover {
+  border-color: rgba(235, 94, 40, 0.5) !important;
+  box-shadow: 0 18px 45px rgba(47, 4, 16, 0.15), 0 0 30px rgba(235, 94, 40, 0.16) !important;
+  transform: translateY(-5px);
 }
