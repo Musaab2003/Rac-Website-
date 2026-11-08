@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Rotaract Club of ICBT - Greek Mythology Theme Interactive Scripts
  * Royal Crimson & Hellenic Beige Edition
  */
@@ -34,37 +34,52 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // 1. Interactive Counter Animation on Scroll
+  // 1. Interactive Counter Animation (Immediate + Intersection + Guaranteed Fallback)
   const counters = document.querySelectorAll('.stat-number');
-  const counterSpeed = 60;
-
-  const runCounter = (counter) => {
-    const target = +counter.getAttribute('data-target');
-    const update = () => {
-      const current = +counter.innerText.replace('+', '');
-      const increment = Math.ceil(target / counterSpeed);
-      if (current < target) {
-        counter.innerText = Math.min(current + increment, target);
-        setTimeout(update, 25);
-      } else {
-        counter.innerText = target + '+';
-      }
+  if (counters.length > 0) {
+    let countersAnimated = false;
+    const runCounters = () => {
+      if (countersAnimated) return;
+      countersAnimated = true;
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'), 10) || 0;
+        if (!target) return;
+        let current = 0;
+        const duration = 1200;
+        const steps = 30;
+        const stepTime = duration / steps;
+        const increment = Math.max(1, Math.ceil(target / steps));
+        
+        counter.innerText = '0';
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            counter.innerText = target + '+';
+            clearInterval(timer);
+          } else {
+            counter.innerText = current;
+          }
+        }, stepTime);
+      });
     };
-    update();
-  };
 
-  const counterObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        counters.forEach(counter => runCounter(counter));
-        observer.disconnect();
+    if ('IntersectionObserver' in window) {
+      const statsSection = document.querySelector('.hero-stats-ribbon') || document.querySelector('#stats');
+      if (statsSection) {
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              runCounters();
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.01 });
+        counterObserver.observe(statsSection);
       }
-    });
-  }, { threshold: 0.3 });
+    }
 
-  const statsSection = document.querySelector('.hero-stats-ribbon') || document.querySelector('#stats');
-  if (statsSection) {
-    counterObserver.observe(statsSection);
+    setTimeout(runCounters, 400);
+    window.addEventListener('scroll', runCounters, { once: true, passive: true });
   }
 
   // 2. Events & Projects Category Filtering
