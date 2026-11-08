@@ -68,16 +68,20 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: #faf7f0;
+  background-color: #f6f1e5;
   color: var(--text-dark);
   line-height: 1.8;
   overflow-x: hidden;
   max-width: 100vw;
   width: 100%;
+  /* Promethean Sacred Flame & Olympian Marble Texture */
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(209, 216, 224, 0.25) 0%, transparent 55%),
-    radial-gradient(circle at 85% 85%, rgba(72, 10, 28, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.75) 0%, transparent 100%);
+    radial-gradient(circle at 10% 18%, rgba(235, 94, 40, 0.08) 0%, transparent 35%),
+    radial-gradient(circle at 90% 32%, rgba(72, 10, 28, 0.09) 0%, transparent 40%),
+    radial-gradient(circle at 20% 65%, rgba(245, 158, 11, 0.07) 0%, transparent 38%),
+    radial-gradient(circle at 82% 82%, rgba(220, 38, 38, 0.06) 0%, transparent 42%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.55) 0%, transparent 85%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M60 0l60 60-60 60L0 60z' fill='%232f0410' fill-opacity='0.012'/%3E%3Ccircle cx='60' cy='60' r='18' fill='%23d97706' fill-opacity='0.01'/%3E%3C/svg%3E");
   background-attachment: fixed;
 }
 
@@ -2253,4 +2257,189 @@ img.smooth-fade-img {
   animation: none !important;
   background-image: none !important;
   background-color: transparent !important;
+}
+
+/* ==========================================================================
+   PROMETHEAN SACRED FLAME & HELLENIC MARBLE CARDS (NO PLAIN WHITE)
+   ========================================================================== */
+.council-agora-card {
+  background: linear-gradient(150deg, #ffffff 0%, #faf5eb 60%, #f4eee2 100%) !important;
+  border: 1px solid #ded5c5 !important;
+  border-left: 5px solid var(--greek-crimson, #2f0410) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 35px rgba(47, 4, 16, 0.08), 0 0 25px rgba(235, 94, 40, 0.06) !important;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.council-agora-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at top right, rgba(235, 94, 40, 0.15) 0%, rgba(245, 158, 11, 0.08) 50%, transparent 75%);
+  pointer-events: none;
+}
+
+.council-agora-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(47, 4, 16, 0.14), 0 0 35px rgba(235, 94, 40, 0.12) !important;
+  border-color: rgba(235, 94, 40, 0.35) !important;
+}
+
+.agora-icon-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #000000;
+  border: 2px solid var(--antique-silver, #d1d8e0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(235, 94, 40, 0.25);
+  flex-shrink: 0;
+}
+
+/* Give all content cards a warm Greek marble & subtle Promethean ember touch */
+.avenue-overview-stela,
+.contact-stele-card,
+.avenue-card,
+.avenue-project-card,
+.manuscript-card {
+  background: linear-gradient(155deg, #ffffff 0%, #faf6ee 60%, #f6efe2 100%) !important;
+  border: 1px solid #ded5c5 !important;
+  box-shadow: 0 10px 30px rgba(47, 4, 16, 0.06), 0 0 18px rgba(235, 94, 40, 0.04) !important;
+}
+
+.avenue-card:hover,
+.contact-stele-card:hover,
+.avenue-project-card:hover {
+  border-color: rgba(235, 94, 40, 0.45) !important;
+  box-shadow: 0 16px 40px rgba(47, 4, 16, 0.12), 0 0 25px rgba(235, 94, 40, 0.14) !important;
+}
+
+/* Section background warmth */
+section.bg-white {
+  background: linear-gradient(180deg, #f8f4ec 0%, #ffffff 50%, #f8f4ec 100%) !important;
+}
+
+section.bg-light {
+  background: linear-gradient(180deg, #f3ece0 0%, #f7f2e7 50%, #f3ece0 100%) !important;
+}
+
+/* ==========================================================================
+   BUTTER-SMOOTH SCROLL REVEAL ANIMATIONS (APPEAR AS YOU SCROLL)
+   ========================================================================== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.985);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+/* Stagger transitions for sibling columns */
+.scroll-delay-1 { transition-delay: 0.1s !important; }
+.scroll-delay-2 { transition-delay: 0.2s !important; }
+.scroll-delay-3 { transition-delay: 0.3s !important; }
+.scroll-delay-4 { transition-delay: 0.4s !important; }
+
+/* ==========================================================================
+   MOBILE VIEW PERFECTION (RESPONSIVE ENHANCEMENTS)
+   ========================================================================== */
+@media (max-width: 991.98px) {
+  .temple-navbar .navbar-collapse {
+    background: rgba(24, 2, 8, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(209, 216, 224, 0.25);
+    border-radius: 16px;
+    padding: 22px 18px;
+    margin-top: 14px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75);
+  }
+  
+  .temple-navbar .nav-link {
+    padding: 10px 14px !important;
+    font-size: 1.05rem !important;
+  }
+
+  .btn-nav-silver {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 12px;
+    padding: 12px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  .hero-pantheon {
+    padding: 85px 16px 45px !important;
+    min-height: auto !important;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 6.8vw, 2.35rem) !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.5px !important;
+    word-break: break-word !important;
+  }
+
+  .hero-greek-motto {
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 22px !important;
+  }
+
+  .hero-badge-tag {
+    font-size: 0.72rem !important;
+    padding: 5px 14px !important;
+    letter-spacing: 1px !important;
+  }
+
+  .form-stele-wrapper,
+  .council-agora-card,
+  .p-4.p-md-5 {
+    padding: 24px 18px !important;
+  }
+
+  /* Critical: inputs 16px font-size prevents iOS Safari auto-zoom */
+  .greek-form-control,
+  .form-control,
+  .form-select,
+  textarea {
+    font-size: 16px !important;
+    padding: 12px 14px !important;
+  }
+
+  .btn-greek {
+    padding: 12px 18px !important;
+    font-size: 0.92rem !important;
+    min-height: 44px; /* Touch target standard */
+  }
+
+  .section-padding {
+    padding: 50px 0 !important;
+  }
+
+  .section-title {
+    font-size: clamp(1.65rem, 5vw, 2.1rem) !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.92rem !important;
+  }
 }

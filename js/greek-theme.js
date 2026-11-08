@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Rotaract Club of ICBT - Greek Mythology Theme Interactive Scripts
  * Royal Crimson & Hellenic Beige Edition
  */
@@ -505,5 +505,51 @@ document.addEventListener('DOMContentLoaded', function () {
         markImageReady(img);
       });
     }, 1200);
+  })();
+
+  // 10. Butter-Smooth Olympian Scroll Reveal Engine (Elements appear gracefully on scroll)
+  (function initOlympianScrollReveal() {
+    const revealTargets = document.querySelectorAll(
+      '.avenue-card, .avenue-project-card, .contact-stele-card, .council-agora-card, ' +
+      '.mosaic-item, .manuscript-card, .leader-coin-card, .avenue-overview-stela, ' +
+      '.section-header, .form-stele-wrapper, .card, .p-4.rounded-3, .p-4.rounded-4'
+    );
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.1
+      });
+
+      revealTargets.forEach(el => {
+        el.classList.add('scroll-reveal');
+
+        const col = el.closest('[class*="col-"]');
+        if (col && col.parentNode) {
+          const siblings = Array.from(col.parentNode.children);
+          const index = siblings.indexOf(col);
+          if (index >= 0) {
+            el.style.transitionDelay = ${(index % 4) * 0.12}s;
+          }
+        }
+
+        revealObserver.observe(el);
+      });
+
+      // Failsafe: reveal all targets after 1.8s
+      setTimeout(() => {
+        revealTargets.forEach(el => el.classList.add('revealed'));
+      }, 1800);
+    } else {
+      revealTargets.forEach(el => el.classList.add('revealed'));
+    }
   })();
 });
