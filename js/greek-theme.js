@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 5. Real-Life Sacred Missive & Contact Oracle Form Engine (FormSubmit API to icbtrotaract@gmail.com)
+  // 5. Real-Life Sacred Missive & Contact Oracle Form Engine (FormSubmit API to rotaracticbt@gmail.com)
   const setupRealLifeContactForm = (config) => {
     const form = document.getElementById(config.formId);
     if (!form) return;
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // Quick Action: Open default email client targeting icbtrotaract@gmail.com
+    // Quick Action: Open default email client targeting rotaracticbt@gmail.com
     if (btnEmail) {
       btnEmail.addEventListener('click', function () {
         const { name, phone, email, message } = getFormData();
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
           `Phone: ${phone || 'Not provided'}\n\n` +
           `Message:\n${message || 'Greetings! I would like to connect with your club.'}\n`
         );
-        window.location.href = `mailto:icbtrotaract@gmail.com?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:rotaracticbt@gmail.com?subject=${subject}&body=${body}`;
       });
     }
 
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
           _captcha: 'false'
         };
 
-        const res = await fetch('https://formsubmit.co/ajax/icbtrotaract@gmail.com', {
+        const res = await fetch('https://formsubmit.co/ajax/rotaracticbt@gmail.com', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h6 class="fw-bold mb-0 text-white" style="font-family: 'Cinzel', serif; font-size: 1.15rem;">Sacred Missive Dispatched!</h6>
               </div>
               <p class="small mb-3 text-light">
-                Thank you, <strong>${safeName}</strong>. Your inquiry has been transmitted directly to the official inbox of the Rotaract Club of ICBT (<strong>icbtrotaract@gmail.com</strong>). The Council of Archons will review your missive and respond to <strong>${safeEmail}</strong> swiftly.
+                Thank you, <strong>${safeName}</strong>. Your inquiry has been transmitted directly to the official inbox of the Rotaract Club of ICBT (<strong>rotaracticbt@gmail.com</strong>). The Council of Archons will review your missive and respond to <strong>${safeEmail}</strong> swiftly.
               </p>
               <div class="d-flex flex-wrap gap-2 pt-2 border-top border-light border-opacity-25">
                 <a href="https://wa.me/94740860054?text=${encodeURIComponent(`Hi, I just submitted an inquiry on your website: ${data.name} (${data.email})`)}" target="_blank" class="btn btn-sm btn-light fw-bold text-success">
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
           `;
           statusBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
-          alert(`🏛️ Sacred Missive Dispatched! Thank you, ${data.name}. Your message has been sent to icbtrotaract@gmail.com.`);
+          alert(`🏛️ Sacred Missive Dispatched! Thank you, ${data.name}. Your message has been sent to rotaracticbt@gmail.com.`);
         }
 
         form.reset();
@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <a href="https://wa.me/94740860054?text=${encodeURIComponent(`Inquiry from ${data.name} (${data.email}): ${data.message}`)}" target="_blank" class="btn btn-sm btn-success">
                   <i class="fab fa-whatsapp me-1"></i> Send via WhatsApp
                 </a>
-                <a href="mailto:icbtrotaract@gmail.com?subject=${encodeURIComponent(`Inquiry from ${data.name}`)}&body=${encodeURIComponent(data.message)}" class="btn btn-sm btn-outline-light">
+                <a href="mailto:rotaracticbt@gmail.com?subject=${encodeURIComponent(`Inquiry from ${data.name}`)}&body=${encodeURIComponent(data.message)}" class="btn btn-sm btn-outline-light">
                   <i class="fas fa-envelope me-1"></i> Send via Email
                 </a>
               </div>
