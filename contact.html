@@ -236,26 +236,29 @@
                 </div>
               </div>
 
-              <form id="greekContactForm">
+              <form id="greekContactForm" action="https://formsubmit.co/icbtrotaract@gmail.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_subject" value="New Inquiry via racicbt.org (Contact Page)">
                 <div class="row g-3 mb-3">
                   <div class="col-md-6">
                     <label class="form-label fw-bold small text-uppercase">Your Noble Name</label>
-                    <input type="text" id="contactName" class="form-control" placeholder="e.g. Masato Methun" required>
+                    <input type="text" id="contactName" name="name" class="form-control" placeholder="e.g. Masato Methun" required>
                   </div>
                   <div class="col-md-6">
                     <label class="form-label fw-bold small text-uppercase">Contact Number</label>
-                    <input type="tel" id="contactPhone" class="form-control" placeholder="+94 7X XXX XXXX">
+                    <input type="tel" id="contactPhone" name="phone" class="form-control" placeholder="+94 7X XXX XXXX">
                   </div>
                 </div>
 
                 <div class="mb-3">
                   <label class="form-label fw-bold small text-uppercase">Electronic Mail</label>
-                  <input type="email" id="contactEmail" class="form-control" placeholder="noble.leader@domain.com" required>
+                  <input type="email" id="contactEmail" name="email" class="form-control" placeholder="noble.leader@domain.com" required>
                 </div>
 
                 <div class="mb-4">
                   <label class="form-label fw-bold small text-uppercase">Message Inscription</label>
-                  <textarea id="contactMessage" rows="4" class="form-control" placeholder="Write your words of fellowship, proposal, or question..." required></textarea>
+                  <textarea id="contactMessage" name="message" rows="4" class="form-control" placeholder="Write your words of fellowship, proposal, or question..." required></textarea>
                 </div>
 
                 <button type="submit" id="btnSubmitForm" class="btn btn-greek btn-silver w-100 py-3 fs-6 mb-3">

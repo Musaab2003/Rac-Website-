@@ -159,19 +159,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 5. Contact Oracle Form Interactive Submission
-  const contactForm = document.getElementById('greekContactForm');
-  if (contactForm) {
-    const statusBox = document.getElementById('contactFormStatus');
-    const btnWhatsApp = document.getElementById('btnSendWhatsApp');
-    const btnEmail = document.getElementById('btnSendEmail');
+  // 5. Real-Life Sacred Missive & Contact Oracle Form Engine (FormSubmit API to icbtrotaract@gmail.com)
+  const setupRealLifeContactForm = (config) => {
+    const form = document.getElementById(config.formId);
+    if (!form) return;
 
-    // Helper to extract form data
+    const statusBox = document.getElementById(config.statusId);
+    const btnWhatsApp = document.getElementById(config.waBtnId);
+    const btnEmail = document.getElementById(config.mailBtnId);
+
     const getFormData = () => {
-      const name = document.getElementById('contactName')?.value.trim() || '';
-      const phone = document.getElementById('contactPhone')?.value.trim() || '';
-      const email = document.getElementById('contactEmail')?.value.trim() || '';
-      const message = document.getElementById('contactMessage')?.value.trim() || '';
+      const name = document.getElementById(config.nameId)?.value.trim() || '';
+      const phone = document.getElementById(config.phoneId)?.value.trim() || '';
+      const email = document.getElementById(config.emailId)?.value.trim() || '';
+      const message = document.getElementById(config.messageId)?.value.trim() || '';
       return { name, phone, email, message };
     };
 
@@ -180,12 +181,12 @@ document.addEventListener('DOMContentLoaded', function () {
       btnWhatsApp.addEventListener('click', function () {
         const { name, phone, email, message } = getFormData();
         let text = '🏛️ *Inquiry for Rotaract Club of ICBT*\n\n';
-        if (name) text += `*Name:* ${name}\n`;
+        if (name) text += `*Noble Name:* ${name}\n`;
         if (email) text += `*Email:* ${email}\n`;
         if (phone) text += `*Phone:* ${phone}\n`;
         if (message) text += `*Message:* ${message}\n`;
         if (!message && !name) {
-          text += 'Hello Rotaract Club of ICBT, I would like to inquire about membership and club activities.';
+          text += 'Hello Rotaract Club of ICBT, I would like to inquire about membership, partnerships, or club activities.';
         }
         window.open(`https://wa.me/94740860054?text=${encodeURIComponent(text)}`, '_blank');
       });
@@ -207,64 +208,122 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // Main Form Submission (Saves message to local server /api/contact)
-    contactForm.addEventListener('submit', async function (e) {
+    // Real-Life Form Submission Engine via FormSubmit AJAX API
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
       const submitBtn = this.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
       const data = getFormData();
 
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Dispatching via Hermes...';
+      if (!data.name || !data.email || !data.message) {
+        alert('Please fill in your Name, Email, and Message.');
+        return;
+      }
+
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Dispatching Sacred Missive...';
       submitBtn.disabled = true;
 
       try {
-        const res = await fetch('/api/contact', {
+        const payload = {
+          name: data.name,
+          email: data.email,
+          phone: data.phone || 'Not provided',
+          message: data.message,
+          _subject: `New Sacred Missive from ${data.name} via racicbt.org`,
+          _template: 'table',
+          _captcha: 'false'
+        };
+
+        const res = await fetch('https://formsubmit.co/ajax/icbtrotaract@gmail.com', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
         });
 
         const result = await res.json().catch(() => ({}));
 
         if (statusBox) {
           statusBox.style.display = 'block';
+          const safeName = data.name.replace(/[&<>'"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;' }[c]));
+          const safeEmail = data.email.replace(/[&<>'"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;' }[c]));
+
           statusBox.innerHTML = `
-            <div class="alert alert-success bg-opacity-25 bg-success text-white border-success p-3 rounded">
-              <h6 class="fw-bold mb-1"><i class="fas fa-check-circle me-1"></i> Sacred Missive Inscribed!</h6>
-              <p class="small mb-2">Thank you, <strong>${data.name || 'Noble Leader'}</strong>. Your inquiry has been stored.</p>
-              <div class="d-flex gap-2">
-                <a href="https://wa.me/94740860054?text=${encodeURIComponent(`Hi, I just submitted an inquiry on your website: ${data.name} (${data.email})`)}" target="_blank" class="btn btn-sm btn-success">
-                  <i class="fab fa-whatsapp me-1"></i> Follow up on WhatsApp
+            <div class="alert alert-success border-0 text-white p-4 rounded-3 shadow-lg mt-3" style="background: linear-gradient(135deg, rgba(25, 135, 84, 0.95), rgba(15, 81, 50, 0.95)); border-left: 4px solid #ffffff !important;">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-check-circle fs-4 text-warning"></i>
+                <h6 class="fw-bold mb-0 text-white" style="font-family: 'Cinzel', serif; font-size: 1.15rem;">Sacred Missive Dispatched!</h6>
+              </div>
+              <p class="small mb-3 text-light">
+                Thank you, <strong>${safeName}</strong>. Your inquiry has been transmitted directly to the official inbox of the Rotaract Club of ICBT (<strong>icbtrotaract@gmail.com</strong>). The Council of Archons will review your missive and respond to <strong>${safeEmail}</strong> swiftly.
+              </p>
+              <div class="d-flex flex-wrap gap-2 pt-2 border-top border-light border-opacity-25">
+                <a href="https://wa.me/94740860054?text=${encodeURIComponent(`Hi, I just submitted an inquiry on your website: ${data.name} (${data.email})`)}" target="_blank" class="btn btn-sm btn-light fw-bold text-success">
+                  <i class="fab fa-whatsapp me-1 text-success"></i> Instant Follow-Up on WhatsApp
+                </a>
+                <button type="button" class="btn btn-sm btn-outline-light" onclick="this.closest('.alert').remove()">
+                  Dismiss
+                </button>
+              </div>
+            </div>
+          `;
+          statusBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          alert(`🏛️ Sacred Missive Dispatched! Thank you, ${data.name}. Your message has been sent to icbtrotaract@gmail.com.`);
+        }
+
+        form.reset();
+      } catch (err) {
+        console.error('Form submission error:', err);
+        if (statusBox) {
+          statusBox.style.display = 'block';
+          statusBox.innerHTML = `
+            <div class="alert alert-warning border-0 text-white p-3 rounded-3 mt-3" style="background: rgba(255, 193, 7, 0.2); border-left: 4px solid #ffc107 !important;">
+              <h6 class="fw-bold mb-1 text-warning"><i class="fas fa-exclamation-triangle me-1"></i> Transmission Notice</h6>
+              <p class="small mb-2 text-light">If your browser or network prevented the automated dispatch, please send your message directly via one of our official channels below:</p>
+              <div class="d-flex flex-wrap gap-2">
+                <a href="https://wa.me/94740860054?text=${encodeURIComponent(`Inquiry from ${data.name} (${data.email}): ${data.message}`)}" target="_blank" class="btn btn-sm btn-success">
+                  <i class="fab fa-whatsapp me-1"></i> Send via WhatsApp
+                </a>
+                <a href="mailto:icbtrotaract@gmail.com?subject=${encodeURIComponent(`Inquiry from ${data.name}`)}&body=${encodeURIComponent(data.message)}" class="btn btn-sm btn-outline-light">
+                  <i class="fas fa-envelope me-1"></i> Send via Email
                 </a>
               </div>
             </div>
           `;
-        } else {
-          alert('✉️ Missive received! We shall dispatch our response across the Aegean promptly.');
         }
-
-        contactForm.reset();
-      } catch (err) {
-        // Fallback for static hosting without server.js
-        console.warn('Backend /api/contact not responding, falling back to client alert', err);
-        if (statusBox) {
-          statusBox.style.display = 'block';
-          statusBox.innerHTML = `
-            <div class="alert alert-success bg-opacity-25 bg-success text-white border-success p-3 rounded">
-              <h6 class="fw-bold mb-1"><i class="fas fa-check-circle me-1"></i> Sacred Missive Dispatched!</h6>
-              <p class="small mb-0">Your message is ready. You can also contact us directly at <a href="mailto:icbtrotaract@gmail.com" class="text-white text-decoration-underline">icbtrotaract@gmail.com</a> or WhatsApp.</p>
-            </div>
-          `;
-        } else {
-          alert('✉️ Missive received! We shall dispatch our response across the Aegean promptly.');
-        }
-        contactForm.reset();
       } finally {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
       }
     });
-  }
+  };
+
+  // Setup Contact Page Form
+  setupRealLifeContactForm({
+    formId: 'greekContactForm',
+    statusId: 'contactFormStatus',
+    nameId: 'contactName',
+    phoneId: 'contactPhone',
+    emailId: 'contactEmail',
+    messageId: 'contactMessage',
+    waBtnId: 'btnSendWhatsApp',
+    mailBtnId: 'btnSendEmail'
+  });
+
+  // Setup Homepage Contact Form
+  setupRealLifeContactForm({
+    formId: 'greekIndexContactForm',
+    statusId: 'indexContactFormStatus',
+    nameId: 'indexContactName',
+    phoneId: 'indexContactPhone',
+    emailId: 'indexContactEmail',
+    messageId: 'indexContactMessage',
+    waBtnId: 'btnIndexSendWhatsApp',
+    mailBtnId: 'btnIndexSendEmail'
+  });
 
   // 6. Smooth Scroll Offset for Sticky Temple Frieze Navbar
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
